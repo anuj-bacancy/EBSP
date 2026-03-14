@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
-  distDir: ".next-build",
+  distDir: ".next-local",
 };
 
 export default nextConfig;
