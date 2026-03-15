@@ -15,6 +15,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 
 export function DataTable<TData>({ columns, data, searchPlaceholder = "Search" }: { columns: ColumnDef<TData>[]; data: TData[]; searchPlaceholder?: string }) {
   const [globalFilter, setGlobalFilter] = useState("");
+  const isFiltering = globalFilter.trim().length > 0;
 
   // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
@@ -63,7 +64,9 @@ export function DataTable<TData>({ columns, data, searchPlaceholder = "Search" }
               ) : (
                 <TableRow>
                   <TableCell className="py-10 text-center text-[var(--muted-foreground)]" colSpan={columns.length}>
-                    No records matched the current filter.
+                    {isFiltering
+                      ? "No records matched the current filter."
+                      : "No data yet. Records will appear here once available."}
                   </TableCell>
                 </TableRow>
               )}

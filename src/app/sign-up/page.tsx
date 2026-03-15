@@ -18,7 +18,7 @@ export default async function SignUpPage() {
       <main className="mx-auto max-w-xl px-6 py-16">
         <Card>
           <CardHeader>
-            <CardTitle>Create a sandbox workspace</CardTitle>
+            <CardTitle>Create your workspace</CardTitle>
           </CardHeader>
           <CardContent>
             <SignUpForm />

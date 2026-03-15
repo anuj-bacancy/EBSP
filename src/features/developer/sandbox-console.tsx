@@ -78,31 +78,31 @@ export function SandboxConsole({
   const accountForm = useForm<z.infer<typeof accountSchema>>({
     resolver: zodResolver(accountSchema),
     defaultValues: {
-      partnerId: "partner-acme",
-      endUserId: "user-elena",
+      partnerId: partners[0]?.id ?? "",
+      endUserId: endUsers[0]?.id ?? "",
       type: "checking",
-      nickname: "Instant Payout",
+      nickname: "Operating Account",
     },
   });
 
   const transferForm = useForm<z.input<typeof transferSchema>>({
     resolver: zodResolver(transferSchema),
     defaultValues: {
-      accountId: "acct-001",
-      beneficiaryId: "benef-001",
+      accountId: accounts[0]?.id ?? "",
+      beneficiaryId: beneficiaries[0]?.id ?? "",
       amountCents: 22000,
       direction: "debit",
       speed: "same_day",
-      idempotencyKey: "idem-demo-2230",
+      idempotencyKey: "idem-2230",
     },
   });
 
   const cardForm = useForm<z.input<typeof cardSchema>>({
     resolver: zodResolver(cardSchema),
     defaultValues: {
-      partnerId: "partner-acme",
-      accountId: "acct-001",
-      cardholderName: "Elena Rodriguez",
+      partnerId: partners[0]?.id ?? "",
+      accountId: accounts[0]?.id ?? "",
+      cardholderName: endUsers[0]?.legalName ?? "",
       dailyLimitCents: 85000,
     },
   });

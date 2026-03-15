@@ -50,10 +50,10 @@ export function SignInForm({ defaultEmail }: { defaultEmail?: string }) {
         <Input id="password" type="password" {...form.register("password")} />
       </div>
       <Button className="w-full" type="submit" disabled={pending}>
-        {pending ? "Signing in..." : "Enter dashboard"}
+        {pending ? "Signing in..." : "Sign in"}
       </Button>
       <p className="text-sm text-[var(--muted-foreground)]">
-        Sign in with a real Supabase Auth user. Tenant access is derived from your profile and partner membership rows.
+        Sign in with your Supabase Auth account. Workspace access is derived from your profile and partner membership rows.
       </p>
     </form>
   );

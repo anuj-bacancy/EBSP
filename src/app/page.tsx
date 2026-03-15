@@ -9,17 +9,17 @@ import { SectionTitle } from "@/components/ui/section-title";
 const featureCards = [
   {
     title: "Accounts and ledger orchestration",
-    copy: "Create checking, savings, and business checking products with deterministic lifecycle controls, balance views, and demo-safe ledger consistency.",
+    copy: "Create checking, savings, and business checking products with deterministic lifecycle controls and accurate balance visibility.",
     icon: Building2,
   },
   {
     title: "ACH, cards, and sandbox providers",
-    copy: "Simulate same-day ACH, virtual card issuance, idempotent APIs, and webhook delivery with clean abstractions for future real providers.",
+    copy: "Run ACH, virtual card issuance, idempotent APIs, and webhook delivery with a clean integration model.",
     icon: CreditCard,
   },
   {
     title: "Compliance and risk visibility",
-    copy: "Run mock KYC, OFAC/PEP screening, fraud scoring, and audit traces through a polished dashboard built for demos and product reviews.",
+    copy: "Manage KYC, OFAC/PEP screening, fraud scoring, and audit traces in a single operational view.",
     icon: ShieldCheck,
   },
 ];
@@ -37,28 +37,28 @@ export default function Home() {
             </span>
             <div className="space-y-5">
               <h1 className="font-display max-w-4xl text-5xl font-semibold tracking-tight md:text-7xl">
-                Launch accounts, ACH, cards, webhooks, and compliance workflows from a single sandbox control plane.
+                Launch accounts, ACH, cards, webhooks, and compliance workflows from one embedded banking platform.
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-[var(--muted-foreground)]">
-                Northstar BaaS Cloud is a polished, demo-ready multi-tenant platform built for partner operations, compliance teams, and developers who need embedded finance workflows without a traditional backend server.
+                Northstar BaaS Cloud is built for partner operations, compliance teams, and developers who need secure, API-first embedded finance workflows.
               </p>
             </div>
             <div className="flex flex-wrap gap-4">
               <Button asChild size="lg">
                 <Link href="/sign-up">
-                  Start sandbox
+                  Sign up
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link href="/docs">Explore API docs</Link>
+                <Link href="/sign-in">Sign in</Link>
               </Button>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
               {[
-                ["5 demo roles", "Platform, compliance, partner, and end-user personas"],
+                ["Role-based access", "Platform, compliance, partner, and end-user personas"],
                 ["18 core pages", "Operations, fraud, billing, statements, and docs"],
-                ["Supabase-ready", "Migrations, RLS, auth helpers, and seed flow included"],
+                ["Supabase-first", "Auth, RLS, and multi-tenant data model ready"],
               ].map(([label, copy]) => (
                 <div key={label} className="rounded-[24px] border border-[var(--border)] bg-[var(--panel)] p-5">
                   <p className="text-lg font-semibold">{label}</p>
@@ -92,7 +92,7 @@ export default function Home() {
           <SectionTitle
             eyebrow="MVP surface"
             title="Feature depth aligned to the hackathon BRD"
-            description="The app ships with seeded organizations, partner memberships, KYC cases, transfers, cards, fraud alerts, webhook logs, and analytics so the product feels complete immediately."
+            description="The platform covers core account lifecycle, KYC/KYB, ACH flows, card issuance, webhook events, and risk monitoring required for MVP."
           />
           <div className="grid gap-6 lg:grid-cols-3">
             {featureCards.map((feature) => {
@@ -118,7 +118,7 @@ export default function Home() {
               <SectionTitle
                 eyebrow="AI sandbox"
                 title="Deterministic transaction risk scoring with explainability"
-                description="Every demo transaction carries score factors across amount, velocity, location, device, and merchant category risk, then maps to allow, flag, review, or decline."
+                description="Every transaction includes explainable score factors across amount, velocity, location, device, and merchant category risk, then maps to allow, flag, review, or decline."
               />
             </CardContent>
           </Card>

@@ -6,7 +6,12 @@ import { DemoIdentities } from "@/features/auth/demo-identities";
 import { SignInForm } from "@/features/auth/sign-in-form";
 import { getAppSession } from "@/lib/auth/session";
 
-export default async function SignInPage() {
+export default async function SignInPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ email_confirmed?: string }>;
+}) {
+  const params = await searchParams;
   const session = await getAppSession();
 
   if (session) {
@@ -22,6 +27,11 @@ export default async function SignInPage() {
             <CardTitle>Sign in to Northstar</CardTitle>
           </CardHeader>
           <CardContent>
+            {params.email_confirmed === "1" ? (
+              <p className="mb-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-300">
+                Email verified successfully. You can sign in now.
+              </p>
+            ) : null}
             <SignInForm />
           </CardContent>
         </Card>

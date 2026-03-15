@@ -14,22 +14,37 @@ import {
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-const transferData = [
-  { day: "Mon", volume: 52, failed: 2 },
-  { day: "Tue", volume: 61, failed: 1 },
-  { day: "Wed", volume: 74, failed: 4 },
-  { day: "Thu", volume: 89, failed: 5 },
-  { day: "Fri", volume: 68, failed: 3 },
-];
+type TransferChartPoint = {
+  day: string;
+  volume: number;
+  failed: number;
+};
 
-const riskData = [
-  { name: "Allow", value: 62, fill: "#10b981" },
-  { name: "Flag", value: 23, fill: "#38bdf8" },
-  { name: "Review", value: 10, fill: "#f59e0b" },
-  { name: "Decline", value: 5, fill: "#f43f5e" },
-];
+type RiskChartPoint = {
+  name: "Allow" | "Flag" | "Review" | "Decline";
+  value: number;
+  fill: string;
+};
 
-export function OverviewCharts() {
+export function OverviewCharts({
+  transferData,
+  riskData,
+}: {
+  transferData: TransferChartPoint[];
+  riskData: RiskChartPoint[];
+}) {
+  const safeTransferData = transferData.length
+    ? transferData
+    : [{ day: "N/A", volume: 0, failed: 0 }];
+  const safeRiskData = riskData.length
+    ? riskData
+    : [
+        { name: "Allow", value: 0, fill: "#10b981" },
+        { name: "Flag", value: 0, fill: "#38bdf8" },
+        { name: "Review", value: 0, fill: "#f59e0b" },
+        { name: "Decline", value: 0, fill: "#f43f5e" },
+      ];
+
   return (
     <div className="grid gap-6 xl:grid-cols-[1.8fr_1fr]">
       <Card>
@@ -38,7 +53,7 @@ export function OverviewCharts() {
         </CardHeader>
         <CardContent className="h-80">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={transferData}>
+            <BarChart data={safeTransferData}>
               <CartesianGrid stroke="rgba(148,163,184,0.12)" vertical={false} />
               <XAxis dataKey="day" tick={{ fill: "var(--muted-foreground)" }} axisLine={false} tickLine={false} />
               <YAxis tick={{ fill: "var(--muted-foreground)" }} axisLine={false} tickLine={false} />
@@ -56,7 +71,7 @@ export function OverviewCharts() {
         <CardContent className="h-80">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
-              <Pie data={riskData} dataKey="value" innerRadius={68} outerRadius={104} paddingAngle={4} />
+              <Pie data={safeRiskData} dataKey="value" innerRadius={68} outerRadius={104} paddingAngle={4} />
               <Tooltip />
             </PieChart>
           </ResponsiveContainer>

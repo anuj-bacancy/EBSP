@@ -23,15 +23,21 @@ export function OperationalPanels({
           <CardTitle>Transfer success vs failure</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          {transfers.map((transfer) => (
-            <div key={transfer.id} className="flex items-center justify-between rounded-2xl border border-[var(--border)] px-4 py-3">
-              <div>
-                <p className="font-medium">{transfer.id}</p>
-                <p className="text-sm text-[var(--muted-foreground)]">{formatCurrency(transfer.amountCents)}</p>
+          {transfers.length ? (
+            transfers.map((transfer) => (
+              <div key={transfer.id} className="flex items-center justify-between rounded-2xl border border-[var(--border)] px-4 py-3">
+                <div>
+                  <p className="font-medium">{transfer.id}</p>
+                  <p className="text-sm text-[var(--muted-foreground)]">{formatCurrency(transfer.amountCents)}</p>
+                </div>
+                <StatusBadge status={transfer.status} />
               </div>
-              <StatusBadge status={transfer.status} />
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="rounded-2xl border border-[var(--border)] bg-black/10 px-4 py-6 text-sm text-[var(--muted-foreground)]">
+              No transfer records available yet.
+            </p>
+          )}
         </CardContent>
       </Card>
       <Card>
@@ -62,15 +68,21 @@ export function OperationalPanels({
           <CardTitle>Fraud queue snapshot</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          {fraudAlerts.map((alert) => (
-            <div key={alert.id} className="rounded-2xl border border-[var(--border)] px-4 py-3">
-              <div className="mb-2 flex items-center justify-between">
-                <p className="font-medium">{alert.summary}</p>
-                <StatusBadge status={alert.status} />
+          {fraudAlerts.length ? (
+            fraudAlerts.map((alert) => (
+              <div key={alert.id} className="rounded-2xl border border-[var(--border)] px-4 py-3">
+                <div className="mb-2 flex items-center justify-between">
+                  <p className="font-medium">{alert.summary}</p>
+                  <StatusBadge status={alert.status} />
+                </div>
+                <p className="text-sm text-[var(--muted-foreground)]">Risk score {alert.score} • Action {alert.action}</p>
               </div>
-              <p className="text-sm text-[var(--muted-foreground)]">Risk score {alert.score} • Action {alert.action}</p>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="rounded-2xl border border-[var(--border)] bg-black/10 px-4 py-6 text-sm text-[var(--muted-foreground)]">
+              No fraud alerts in queue.
+            </p>
+          )}
         </CardContent>
       </Card>
     </div>

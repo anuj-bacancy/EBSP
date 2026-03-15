@@ -182,6 +182,9 @@ export async function signUpAction(_: unknown, formData: FormData) {
     };
   }
 
+  const requestHeaders = await headers();
+  const origin = requestHeaders.get("origin") ?? process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+
   const { data, error } = await supabase.auth.signUp({
     email: parsed.data.email,
     password: parsed.data.password,
@@ -190,6 +193,7 @@ export async function signUpAction(_: unknown, formData: FormData) {
         full_name: parsed.data.fullName,
         title: "Founder",
       },
+      emailRedirectTo: `${origin}/sign-in?email_confirmed=1`,
     },
   });
 
@@ -209,7 +213,11 @@ export async function signUpAction(_: unknown, formData: FormData) {
     });
   }
 
-  redirect("/dashboard");
+  if (data.session) {
+    redirect("/dashboard");
+  }
+
+  redirect(`/auth/verify-email?email=${encodeURIComponent(parsed.data.email)}`);
 }
 
 export async function forgotPasswordAction(_: unknown, formData: FormData) {

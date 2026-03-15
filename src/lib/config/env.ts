@@ -31,7 +31,7 @@ const parsedEnv = envSchema.parse({
 export const env = {
   appName: parsedEnv.NEXT_PUBLIC_APP_NAME,
   appUrl: parsedEnv.NEXT_PUBLIC_APP_URL,
-  demoMode: bool(parsedEnv.NEXT_PUBLIC_DEMO_MODE, true),
+  demoMode: bool(parsedEnv.NEXT_PUBLIC_DEMO_MODE, false),
   supabaseUrl: parsedEnv.NEXT_PUBLIC_SUPABASE_URL ?? "",
   supabaseAnonKey: parsedEnv.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "",
   serviceRoleKey: parsedEnv.SUPABASE_SERVICE_ROLE_KEY ?? "",

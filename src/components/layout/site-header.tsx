@@ -21,7 +21,7 @@ export function SiteHeader() {
           </Link>
           <nav className="hidden items-center gap-6 md:flex">
             {nav.map((item) => (
-              <Link key={item.href} href={item.href} className="text-sm text-[var(--muted-foreground)] transition hover:text-[var(--foreground)]">
+              <Link key={item.href} href={item.href} prefetch={false} className="text-sm text-[var(--muted-foreground)] transition hover:text-[var(--foreground)]">
                 {item.label}
               </Link>
             ))}
@@ -31,10 +31,10 @@ export function SiteHeader() {
           <ModeBanner />
           <ThemeToggle />
           <Button asChild variant="ghost" size="sm">
-            <Link href="/sign-in">Sign in</Link>
+            <Link href="/sign-in" prefetch={false}>Sign in</Link>
           </Button>
           <Button asChild size="sm">
-            <Link href="/sign-up">Start sandbox</Link>
+            <Link href="/sign-up" prefetch={false}>Sign up</Link>
           </Button>
         </div>
       </div>

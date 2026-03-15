@@ -41,6 +41,7 @@ export function PlatformSidebar({ session }: { session: AppSession }) {
             <Link
               key={item.href}
               href={item.href}
+              prefetch={false}
               className="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm text-[var(--muted-foreground)] transition hover:bg-white/6 hover:text-[var(--foreground)]"
             >
               <Icon className="h-4 w-4" />

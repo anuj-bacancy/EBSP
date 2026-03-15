@@ -31,7 +31,7 @@ export default function PricingPage() {
     <div>
       <SiteHeader />
       <main className="mx-auto max-w-7xl space-y-10 px-6 py-16">
-        <SectionTitle eyebrow="Pricing" title="Simple demo pricing tiers" description="Billing is placeholder-first in this MVP, but the pricing model and fee schedule primitives are represented end to end." />
+        <SectionTitle eyebrow="Pricing" title="Simple pricing tiers" description="Pricing aligns with starter, growth, and enterprise partner onboarding models." />
         <div className="grid gap-6 lg:grid-cols-3">
           {plans.map((plan) => (
             <Card key={plan.name}>
@@ -49,7 +49,7 @@ export default function PricingPage() {
                     </div>
                   ))}
                 </div>
-                <Button className="w-full">{plan.name === "Enterprise" ? "Talk to sales" : "Start sandbox"}</Button>
+                <Button className="w-full">{plan.name === "Enterprise" ? "Talk to sales" : "Get started"}</Button>
               </CardContent>
             </Card>
           ))}

@@ -62,10 +62,10 @@ export function SignUpForm() {
         <Input id="password" type="password" {...form.register("password")} />
       </div>
       <Button className="w-full" type="submit" disabled={pending}>
-        {pending ? "Provisioning..." : "Create sandbox workspace"}
+        {pending ? "Creating account..." : "Create account"}
       </Button>
       <p className="text-sm text-[var(--muted-foreground)]">
-        Sign up creates a Supabase Auth user, a profile, a sandbox partner workspace, and the initial membership plus billing records.
+        Sign up creates your Supabase Auth user, profile, partner workspace, and initial membership with billing configuration.
       </p>
     </form>
   );
